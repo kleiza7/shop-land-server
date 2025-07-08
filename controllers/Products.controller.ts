@@ -1,10 +1,11 @@
 import { Request, Response } from 'express';
-import { Product } from '../models';
+import { Product } from '../models/Product.model';
 
 export class ProductsController {
   async getAllProducts(_: Request, res: Response) {
     try {
       const products = await Product.findAll();
+
       res.status(200).json(products);
     } catch (error) {
       res.status(404).json({ message: 'An error occurred when fetch products.' });
@@ -16,6 +17,7 @@ export class ProductsController {
       const { name } = req.body;
 
       const products = await Product.create({ name });
+
       res.status(201).json(products);
     } catch (error) {
       res.status(404).json({ message: 'An error occurred.' });
