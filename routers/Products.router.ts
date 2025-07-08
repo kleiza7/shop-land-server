@@ -1,0 +1,14 @@
+import { Router } from 'express';
+import { ProductsController } from '../controllers/Products.controller';
+
+export class ProductsRouter {
+  constructor(private router: Router, private productsController: ProductsController) {}
+
+  getRouter() {
+    this.router.get('/get-all', this.productsController.getAllProducts);
+
+    this.router.post('/create', this.productsController.createProduct);
+
+    return this.router;
+  }
+}
