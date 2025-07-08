@@ -7,6 +7,8 @@ export class ProductsRouter {
   getRouter() {
     this.router.get('/get-all', this.productsController.getAllProducts);
 
+    this.router.get('/get-by-id/:id', this.productsController.getProductById);
+
     this.router.post('/create', this.productsController.createProduct);
 
     return this.router;
